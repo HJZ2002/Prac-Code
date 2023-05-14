@@ -1,0 +1,9 @@
+Name: Hosea
+Program: CS
+Course: Computer Science
+First Grade: 4
+Second Grade: 5
+Third Grade: 6
+Forth Grade: 3
+Average: 4.5
+Remarks: FailedHosea	Computer Science	IT101	2.5	FAILED
