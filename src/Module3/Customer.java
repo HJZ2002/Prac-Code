@@ -5,7 +5,7 @@ public class Customer {
 
 	public static void main(String[] args) {
 		String menu[]={"[A]dd Customer","[V]iew Customers","[S]earch Customers", "[E]dit Customer", "[D]elete Customer", "[E]xit"};
-		//Code By: Elman, Jhonna Mae M.
+		//Code By: Hosea James Zacarias
 		
 		int MAX=10, index=1;
 		
@@ -17,7 +17,7 @@ public class Customer {
 		
 		
 		do{
-		choice=JOptionPane.showInputDialog(null, "Please Select\nCode By: Elman, Jhonna Mae M.", "Menu", 1, null,menu,menu[0]).toString();
+		choice=JOptionPane.showInputDialog(null, "Please Select\nCode By: Hosea James Zacarias", "Menu", 1, null,menu,menu[0]).toString();
 		
 		
 		switch(choice){
