@@ -1,11 +1,23 @@
 package Tps;
-import java.awt.*;
-import javax.swing.*;
-import java.awt.event.*;
+import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.WindowConstants;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import java.awt.Insets;
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
 
 public class ATM extends JFrame {
 	//filehandling method where it creates automatic transaction list
@@ -21,9 +33,9 @@ public class ATM extends JFrame {
 	        e.printStackTrace();
 	    }
 	}
-	//Variables for balance, the input from the user for deposits,
+		//Variables for balance, the input from the user for deposits,
 		//and for checking that they have clicked Deposit before clicking Enter
-		String name;
+
 		int balance = 10000;
 		String[] inputSequence = new String[4];
 		String[] transactionHist = new String[100];
@@ -31,6 +43,7 @@ public class ATM extends JFrame {
 		int transactionIndex = 0;
 		boolean readyToEnter = false;
 		boolean readyToWithdraw = false;
+		
 		//Basic Constructor Setup - Setting the input array as empty
 		//Other basic setup options - Setting size,
 		public ATM(){
@@ -73,29 +86,30 @@ public class ATM extends JFrame {
 			bPConstrain.weightx= 0.1;
 			bPConstrain.weighty= 0.1;
 			//option1	
-			JButton withDraw1 = new JButton(" 100 ");
+			JButton withDraw1 = new JButton(" 100 ");//withdraw1
 			bPConstrain.gridx = 0;
 			bPConstrain.gridy = 0;	
 			bPConstrain.insets = new Insets(0, 0, 50, 5);
 			withDraw1.setSize(new Dimension(200, 30));
 			buttonPanel.add(withDraw1, bPConstrain);
 			//option2
-			JButton withDraw2 = new JButton(" 500 ");
+			JButton withDraw2 = new JButton(" 500 ");//withdraw2
 			bPConstrain.gridx = 0;
 			bPConstrain.gridy = 1;
 			withDraw2.setSize(new Dimension(200, 30));
 			bPConstrain.insets = new Insets(0, 0, 50, 5);
 			buttonPanel.add(withDraw2, bPConstrain);
 			//option3
-			JButton withDraw3 = new JButton(" 1000");
+			JButton withDraw3 = new JButton(" 1000");//withdraw3
 			bPConstrain.gridx = 0;
 			bPConstrain.gridy = 2;
 			bPConstrain.insets = new Insets(0, 0, 50, 5);
 			//end
 			
-			//deposit area
-			withDraw3.setSize(new Dimension(200, 30));
+			withDraw3.setSize(new Dimension(200, 30));//setting size
 			buttonPanel.add(withDraw3, bPConstrain);
+			
+			//deposit area
 			JButton deposit = new JButton("Deposit");
 			bPConstrain.gridx = 0;
 			bPConstrain.gridy = 3;
@@ -219,7 +233,7 @@ public class ATM extends JFrame {
 						balance = balance -100;
 						displayArea.setText(" Transaction Complete \n Current left :" + balance );
 						readyToEnter = false;
-						updateTransaction(" User has Withdrawn:"+ balance);
+						updateTransaction(" You have Withdrawn:"+ balance);
 						
 					} else {
 						displayArea.setText("Your balance is too low Unable to withdraw "
@@ -235,7 +249,7 @@ public class ATM extends JFrame {
 						balance = balance -500;
 						displayArea.setText(" Transaction Complete \n Current left: " + balance);
 						readyToEnter = false;
-						updateTransaction(" User has Withdrawn:"+ balance);
+						updateTransaction(" You have Withdrawn:"+ balance);
 						
 					} else {
 						displayArea.setText("Your balance is too low Unable to withdraw "
@@ -251,7 +265,7 @@ public class ATM extends JFrame {
 						balance = balance -1000;
 						displayArea.setText(" Transaction Complete \n Current left: " + balance);
 						readyToEnter = false;
-						updateTransaction(" User has Withdrawn:"+ balance);
+						updateTransaction(" You have Withdrawn:"+ balance);
 						
 					} else {
 						displayArea.setText("Your balance is too low Unable to withdraw "
@@ -392,7 +406,7 @@ public class ATM extends JFrame {
 		deposit.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				displayArea.setText("Please input an amout below or equal and click enter! "); 
+				displayArea.setText("Please input an amout below or equal and click enter "); 
 						readyToEnter=true;
 						
 			}
@@ -420,7 +434,7 @@ public class ATM extends JFrame {
 					} else {
 						updateBalance(Integer.parseInt(getInputSequence()));
 						displayArea.setText(" Transaction Complete \n Current left: " + balance);
-						updateTransaction(" User has Deposit:"+getInputSequence());
+						updateTransaction(" You have deposit:"+getInputSequence());
 					}
 					clearInput();
 					inputDisplay.setText("Input display again:");
@@ -444,7 +458,7 @@ public class ATM extends JFrame {
 				if(readyToWithdraw ==true) {
 					//nestedloop
 					if(Integer.parseInt(getInputSequence())<500){
-						displayArea.setText(" Sucess ");
+						displayArea.setText(" Sucessflly withdraw ");
 						clearInput();
 						inputDisplay.setText("Input display ");
 						readyToWithdraw=false;
@@ -458,7 +472,7 @@ public class ATM extends JFrame {
 					} else {
 						updateBalance(-1*(Integer.parseInt(getInputSequence())));
 						displayArea.setText(" Transaction Complete \n Current left: " + balance);
-						updateTransaction(" User has Withdraw:"+getInputSequence());
+						updateTransaction("You have Withdraw:"+getInputSequence());
 					}
 					clearInput();
 					inputDisplay.setText("Input display again:");
@@ -545,4 +559,4 @@ public class ATM extends JFrame {
 		public static void main(String[]args) {
 			new Login();
 		}
-	}					
+	}						
