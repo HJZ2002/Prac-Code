@@ -1,3 +1,2 @@
 # Prac-Code
-My Code Practice
-ASK MY PERMISSION FIRST JUST KIDDING
+My Code Practice Process
